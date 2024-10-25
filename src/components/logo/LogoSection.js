@@ -12,7 +12,7 @@ function LogoSection() {
         className="h-auto"
       />
       <div className="mt-2">
-        <h1 className="text-[18px] md:text-[20px] font-[500] leading-[26.04px] tracking-[-0.24px]">
+        <h1 className="text-[18px] text-[#000000] md:text-[20px] font-[500] leading-[26.04px] tracking-[-0.24px]">
           Frontend Developer
         </h1>
         <p className="text-[12px] md:text-[14px] font-[400] leading-[18.23px] tracking-[-0.24px] text-[#8C8CA1]">
