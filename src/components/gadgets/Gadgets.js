@@ -29,7 +29,7 @@ function Gadgets() {
   useEffect(() => {
     const loadModels = async () => {
       try {
-        await faceapi.nets.tinyFaceDetector.loadFromUri("../models");
+        await faceapi.nets.tinyFaceDetector.loadFromUri("/models");
         console.log("Models loaded");
         setModelsLoaded(true);
       } catch (error) {
