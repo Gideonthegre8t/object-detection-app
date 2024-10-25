@@ -160,14 +160,16 @@ function Gadgets() {
 
   useEffect(() => {
     return () => {
-      if (videoRef.current) {
-        const stream = videoRef.current.srcObject;
+      const currentVideoRef = videoRef.current;
+      if (currentVideoRef) {
+        const stream = currentVideoRef.srcObject;
         if (stream) {
           stream.getTracks().forEach((track) => track.stop());
         }
       }
     };
   }, []);
+  
 
   return (
     <div>

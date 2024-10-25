@@ -1,31 +1,31 @@
 "use client"; // Marking this component as a client component
-import { useState } from "react";
+import { useState, useRef } from "react"; // Import useRef
 import Gadgets from "../gadgets/Gadgets";
 
 function SystemCheck() {
   const [gadgetActive, setGadgetActive] = useState(false);
-
-  let mediaRecorder;
-  let recordedChunks = [];
+  
+  const mediaRecorderRef = useRef(null); // Use useRef for mediaRecorder
+  const recordedChunksRef = useRef([]); // Use useRef for recordedChunks
 
   const handleButtonClick = async () => {
     try {
       setGadgetActive(true);
       // Set up the media recorder for video
       const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
-      mediaRecorder = new MediaRecorder(stream);
+      mediaRecorderRef.current = new MediaRecorder(stream); // Assign to the ref
 
-      mediaRecorder.ondataavailable = (event) => {
+      mediaRecorderRef.current.ondataavailable = (event) => {
         if (event.data.size > 0) {
-          recordedChunks.push(event.data);
+          recordedChunksRef.current.push(event.data); // Push to the ref
         }
       };
 
-      mediaRecorder.start();
+      mediaRecorderRef.current.start();
 
       // Stop recording after 5 seconds
       setTimeout(() => {
-        mediaRecorder.stop();
+        mediaRecorderRef.current.stop(); // Stop using the ref
         setGadgetActive(false); // Revert gadget state after process
       }, 5000); // Assuming 5-second recording
 
