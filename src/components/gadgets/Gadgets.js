@@ -159,17 +159,22 @@ function Gadgets() {
   };
 
   useEffect(() => {
+    // Cleanup function to stop video tracks
     return () => {
       const currentVideoRef = videoRef.current;
       if (currentVideoRef) {
         const stream = currentVideoRef.srcObject;
         if (stream) {
-          stream.getTracks().forEach((track) => track.stop());
+          // Stop all tracks in the stream
+          stream.getTracks().forEach((track) => {
+            track.stop();
+          });
         }
+        // Clear the srcObject to prevent memory leaks
+        currentVideoRef.srcObject = null;
       }
     };
   }, []);
-  
 
   return (
     <div>
