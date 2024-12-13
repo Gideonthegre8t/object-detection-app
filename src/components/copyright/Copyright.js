@@ -10,7 +10,7 @@ function Copyright() {
       </p>
 
       <p className="text-[18px] font-medium leading-[23.44px] mt-1">
-        Getlink.AI
+        Gideon
       </p>
       <p className="text-[14px] font-normal leading-[18.23px] mt-1">
         © {currentYear}.
